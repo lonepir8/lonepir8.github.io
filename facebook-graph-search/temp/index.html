@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook Graph Search</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <form action="https://web.facebook.com/search/posts/" id="profile_id">
+    <input type="hidden" name="q" value="*">
+    <input type="hidden" name="epa" value="FILTERS">
+    <input type="hidden" name="filters">
+    <div><label for="args">Enter or <a href="#" id="paste">paste</a> profile ID</label></div>
+    <div>
+      <input type="number" min="0" step="1" placeholder="profile ID" id="args" required>
+      <button type="submit">Continue</button>
+    </div>
+  </form>
+  <script>
+    {
+      const args = document.getElementById("args");
+      document.getElementById("profile_id").addEventListener("submit", function () {
+        this.filters.value = btoa(`{"rp_author":"{\\"name\\":\\"author\\",\\"args\\":\\"${args.value}\\"}"}`);
+      });
+      document.getElementById("paste").addEventListener("click", event => {
+        event.preventDefault();
+        event.stopPropagation();
+        navigator.clipboard.readText().then(profile_id => {
+          args.value = profile_id;
+        }).catch(e => {
+          if (e.name == "NotAllowedError") alert(`Permission denied. To allow clipboard access,
+1. type "site settings" in omnibox
+2. tap on "Manage site settings"
+3. select "Clipboard"
+4. select "${location.origin}"
+5. Allow`);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
