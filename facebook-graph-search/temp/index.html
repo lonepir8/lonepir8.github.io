@@ -4,18 +4,20 @@
   <meta charset="UTF-8">
   <title>Facebook Graph Search</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/general.css">
 </head>
 <body>
-  <form action="https://web.facebook.com/search/posts/" id="profile_id">
-    <input type="hidden" name="q" value="*">
-    <input type="hidden" name="epa" value="FILTERS">
-    <input type="hidden" name="filters">
-    <div><label for="args">Enter or <a href="#" id="paste">paste</a> profile ID</label></div>
-    <div>
-      <input type="number" min="0" step="1" placeholder="profile ID" id="args" required>
-      <button type="submit">Continue</button>
-    </div>
-  </form>
+  <article class="markdown-body">
+    <h1>Facebook Graph Search</h1>
+    <form action="https://web.facebook.com/search/posts/" id="profile_id">
+      <input type="hidden" name="q" value="*">
+      <input type="hidden" name="epa" value="FILTERS">
+      <input type="hidden" name="filters">
+      <p><label for="args">Enter or <a href="#" id="paste">paste</a> profile ID</label></p>
+      <p><input type="number" min="0" step="1" placeholder="profile ID" id="args" required></p>
+      <p><button type="submit">Continue</button></p>
+    </form>
+  </article>
   <script>
     {
       const args = document.getElementById("args");
