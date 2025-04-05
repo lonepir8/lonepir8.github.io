@@ -17,9 +17,9 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--bgColor-default);
 }
 
 body {
-  background-color: var(--bgColor-default);
   margin: 0;
 }
